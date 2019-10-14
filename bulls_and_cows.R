@@ -47,6 +47,13 @@ bulls_cows_game<-function(){
   computer_vector<-generate_computer_vector()#store the computer vector
   while(guess<10){
     user_guess<-get_guess(guess)
+    correct_guess<-1
+    if(length(user_guess!=4)){
+      correct_guess<-0#incorrect input length
+    } 
+    if(length(user_guess)==4&length(unique(user_guess))!=4){
+      correct_guess<-0#incorrect input format, must be unique number
+    }
     guess<-guess+1
     bulls_cows<-number_bulls_and_cows(computer_vector,user_guess)
     end_game<-do_response(bulls_cows[1],bulls_cows[2])
