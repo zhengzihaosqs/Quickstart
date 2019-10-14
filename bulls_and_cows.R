@@ -67,7 +67,7 @@ bulls_cows_game<-function(){
     bulls_cows<-number_bulls_and_cows(computer_vector,user_guess)
     end_game<-do_response(bulls_cows[1],bulls_cows[2])
     if(guess==10&end_game==0){
-      print(paste("Sorry you did not get the right answer, the correct answer is",computer_vector)) 
+      cat("Sorry you did not get the right answer, the correct answer is",computer_vector)
       #end game when user guesses 10 times incorrectly
     }
     if(end_game==1){break}
