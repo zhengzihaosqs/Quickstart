@@ -44,13 +44,14 @@ bulls_cows_game<-function(){
   
   guess=0
   end_game<-0
+  incorrect_count<-0 #count the incorrect input
   computer_vector<-generate_computer_vector()#store the computer vector
+  numeric_judge<-1:10 #vector for numeric judging
   while(guess<10){
-    incorrect_count<-0 #count the incorrect input
     correct_guess<-0 #judge whether the input is correct
     while(incorrect_count<3&correct_guess==0){
       user_guess<-get_guess(guess)
-      if(length(user_guess)==4&length(unique(user_guess))==4){
+      if(length(user_guess)==4&length(unique(user_guess))==4&all(user_guess%in%numeric_judge)){
         correct_guess<-1#correct input format
       } 
       else{
