@@ -20,12 +20,12 @@ bulls_cows_game<-function(){
         }
       }
       return(bulls)
-    }#calculate the bulls
+    }#sub-function to calculate the bulls
     bulls<-number_bulls(computer_vector,user_guess)
     number_cows<-function(computer_vector,user_guess,bulls){
       cows<-length(intersect(computer_vector,user_guess))-bulls
       return(cows)
-    }#calculate the cows
+    }#sub-function to calculate the cows
     cows<-number_cows(computer_vector,user_guess,bulls)
     return(c(bulls,cows))
   }
@@ -44,11 +44,12 @@ bulls_cows_game<-function(){
   
   guess=0
   end_game<-0
-  incorrect_count<-0 #count the incorrect input
   computer_vector<-generate_computer_vector()#store the computer vector
   numeric_judge<-1:10 #vector for numeric judging
+  cat("For testing the code, the computer's vector is",computer_vector,"\n")
   while(guess<10){
     correct_guess<-0 #judge whether the input is correct
+    incorrect_count<-0 #count the incorrect input
     while(incorrect_count<3&correct_guess==0){
       user_guess<-get_guess(guess)
       if(length(user_guess)==4&length(unique(user_guess))==4&all(user_guess%in%numeric_judge)){
@@ -61,7 +62,7 @@ bulls_cows_game<-function(){
     }
     if(incorrect_count==3){
       print("Three incorrect inputs, game over.")
-      break
+      break#the incorrect inputs should happened continuously to end game
     }
     guess<-guess+1
     bulls_cows<-number_bulls_and_cows(computer_vector,user_guess)
